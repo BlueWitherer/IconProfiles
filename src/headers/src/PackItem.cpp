@@ -1,4 +1,4 @@
-#include "../PacksPopup.hpp"
+#include "../PackItem.hpp"
 
 #include <Geode/Geode.hpp>
 
