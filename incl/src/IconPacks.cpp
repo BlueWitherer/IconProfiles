@@ -10,7 +10,9 @@ using namespace matjson;
 namespace iconpacks {
     Mod* m_thisMod = getMod();
 
-    IconPack IconPackManager::parsePack(Value json) {};
+    IconPack IconPackManager::parsePack(Value json) {
+        return IconPack();
+    };
 
     std::vector<IconPack> IconPackManager::getAllIconPacks() {
         auto saveData = m_thisMod->getSaveContainer();
