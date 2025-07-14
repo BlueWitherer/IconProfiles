@@ -1,0 +1,36 @@
+{
+	"geode": "4.6.3",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "cheeseworks.iconpacks",
+	"name": "Icon Packs",
+	"version": "v1.0.0",
+	"developers": [
+		"Cheeseworks"
+	],
+	"description": "Save your icon sets into packs!",
+	"dependencies": {
+		"geode.node-ids": {
+			"importance": "required",
+			"version": ">=1.21.0"
+		}
+	},
+	"links": {
+		"source": "https://github.com/BlueWitherer/IconPacks",
+		"homepage": "https://avalanche.cubicstudios.xyz/",
+		"community": "https://www.dsc.gg/cubic"
+	},
+	"issues": {
+		"info": "Report any issues to our repository!",
+		"url": "https://www.github.com/BlueWitherer/IconPacks/issues/"
+	},
+	"tags": [
+		"offline",
+		"enhancement"
+	],
+	"early-load": false
+}
