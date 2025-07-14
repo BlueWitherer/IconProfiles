@@ -1,7 +1,7 @@
-# Favorite Mods
-**Add installed Geode mods as your favorites!**
+# Icon Packs
+**Save your icon sets into packs!**
 
-*by* ***[Cheeseworks](user:6408873)*** *& more!*
+*by* ***[Cheeseworks](user:6408873)****!*
 
 ---
 
