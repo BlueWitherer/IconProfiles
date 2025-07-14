@@ -3,6 +3,7 @@
 #include <Geode/Geode.hpp>
 
 using namespace geode::prelude;
+using namespace matjson;
 
 namespace iconpacks {
     extern Mod* m_thisMod; // Favorite Mods
@@ -35,12 +36,15 @@ namespace iconpacks {
     };
 
     class IconPackManager {
+    protected:
+        IconPack parsePack(Value json);
+
     public:
         // Get an array of all the player's icon packs
         std::vector<IconPack> getAllIconPacks();
 
         // Save a new icon pack
-        IconPack savePack(
+        void savePack(
             IconPack pack // The constructed icon pack
         );
     };
