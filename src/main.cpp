@@ -33,6 +33,6 @@ class $modify(MyGarageLayer, GJGarageLayer) {
     };
 
     void onPacksButton(CCObject*) {
-        PacksPopup::create("Icon Packs", "Access your icon sets quickly.", "OK");
+        PacksPopup::create();
     };
 };
