@@ -23,6 +23,7 @@ namespace iconpacks {
         int spider = 1;
         int swing = 1;
 
+        int streak = 1;
         int shipFire = 1;
 
         int color1 = 1;
@@ -32,6 +33,31 @@ namespace iconpacks {
 
         bool glow = false;
 
+        // evil constructor
+        IconPack(
+            bool pk, // Set to true
+            std::string nme, // Custom name for the pack
+            int prio, // List priority of the pack for UI
+            int ic, // Player's icon ID
+            int sh, // Player's ship ID
+            int bl, // Player's ball ID
+            int uo, // Player's UFO ID
+            int wv, // Player's wave ID
+            int rb, // Player's robot ID
+            int sp, // Player's spider ID
+            int sw, // Player's swing ID
+            int str, // Player's streak ID
+            int shFr, // Player's ship fire ID
+            int co1, // Player's primary color ID
+            int co2, // Player's secondary color ID
+            int coGl, // Player's glow color ID
+            bool gl // Player's glow setting
+        ) : pack(pk), name(nme), priority(prio),
+            icon(ic), ship(sh), ball(bl), ufo(uo), wave(wv), robot(rb), spider(sp), swing(sw),
+            streak(str), shipFire(shFr),
+            color1(co1), color2(co2), colorGlow(coGl), glow(gl) {};
+
+        // Default constructor
         IconPack() = default;
     };
 
@@ -44,8 +70,14 @@ namespace iconpacks {
         std::vector<IconPack> getAllIconPacks();
 
         // Save a new icon pack
-        void savePack(
+        static Value savePack(
             IconPack pack // The constructed icon pack
+        );
+
+        // Edit a pre-existing icon pack
+        static Value editPack(
+            IconPack pack, // The constructed icon pack
+            std::string name // The name of the current icon pack
         );
     };
 };

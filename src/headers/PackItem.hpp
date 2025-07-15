@@ -10,4 +10,9 @@ using namespace iconpacks;
 class PackItem : public CCNode {
 protected:
     IconPack m_pack;
+
+    bool init(IconPack pack, CCSize size);
+
+public:
+    static PackItem* create(IconPack pack, CCSize size);
 };
