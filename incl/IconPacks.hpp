@@ -73,7 +73,7 @@ namespace iconpacks {
 
     public:
         // Get an array of all the player's icon packs
-        std::vector<IconPack> getAllIconPacks();
+        static std::vector<IconPack> getAllIconPacks();
 
         // Save a new icon pack
         static Value savePack(

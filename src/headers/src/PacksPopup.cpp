@@ -51,6 +51,17 @@ bool PacksPopup::setup() {
     return true;
 };
 
+void PacksPopup::onPromptNewPack(CCObject*) {
+    createQuickPopup(
+        "New Icon Pack",
+        "Are you sure you want to <cg>create a new icon pack</c> with your <cy>current icon set</c>?",
+        "Cancel", "Yes",
+        [this](auto, bool btn2) {
+            auto prio = as<int>(IconPackManager::getAllIconPacks().size());
+            Pack("Unnamed Pack", prio);
+        }, true);
+};
+
 void PacksPopup::Pack(std::string name, int priority) {
     auto gm = GameManager::get();
 
@@ -72,7 +83,7 @@ void PacksPopup::Pack(std::string name, int priority) {
         gm->getPlayerColor2(),
         gm->getPlayerGlowColor(),
         gm->getPlayerGlow(),
-        ""
+        std::string()
     );
 
     IconPackManager::savePack(pack);
