@@ -33,6 +33,11 @@ class $modify(MyGarageLayer, GJGarageLayer) {
     };
 
     void onPacksButton(CCObject*) {
-        PacksPopup::create();
+        if (auto popup = PacksPopup::create()) {
+            popup->show();
+            log::debug("Icon packs popup shown successfully");
+        } else {
+            log::error("Failed to create icon packs popup!");
+        };
     };
 };

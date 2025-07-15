@@ -1,5 +1,7 @@
 #include "../IconPacks.hpp"
 
+#include <fmt/core.h>
+
 #include <Geode/Geode.hpp>
 
 #include <Geode/utils/terminate.hpp>
@@ -21,7 +23,28 @@ namespace iconpacks {
         for (auto& [key, value] : saveData) {
             if (value.isObject()) {
                 if (value["pack"].asBool()) {
-                    IconPack icons();
+                    IconPack icons(
+                        true,
+                        value["name"].asString().unwrapOr("Name"),
+                        value["priority"].asInt().unwrapOr(0),
+                        value["icon"].asInt().unwrapOr(1),
+                        value["ship"].asInt().unwrapOr(1),
+                        value["ball"].asInt().unwrapOr(1),
+                        value["ufo"].asInt().unwrapOr(1),
+                        value["wave"].asInt().unwrapOr(1),
+                        value["robot"].asInt().unwrapOr(1),
+                        value["spider"].asInt().unwrapOr(1),
+                        value["swing"].asInt().unwrapOr(1),
+                        value["streak"].asInt().unwrapOr(1),
+                        value["shipFire"].asInt().unwrapOr(1),
+                        value["color1"].asInt().unwrapOr(1),
+                        value["color2"].asInt().unwrapOr(1),
+                        value["colorGlow"].asInt().unwrapOr(1),
+                        value["glow"].asBool().unwrapOr(false),
+                        key
+                    );
+
+                    packs.push_back(icons);
                     log::debug("Processed icon pack {}", key);
                 } else {
                     log::error("Invalid icon pack object '{}'", key);
@@ -34,7 +57,7 @@ namespace iconpacks {
         return packs;
     };
 
-    Value IconPackManager::savePack(IconPack pack) {
+    Value IconPackManager::savePack(IconPack pack, std::string id) {
         auto packJson = Value::object();
 
         // so its easier to check later
@@ -66,7 +89,14 @@ namespace iconpacks {
         // glowwwww
         packJson["glow"] = pack.glow;
 
-        m_thisMod->setSavedValue(std::to_string(pack.priority), packJson);
+        // evil id
+        auto newId = id.empty() ? fmt::format("{}:{}:{}:{}:{}:{}:{}:{}-{}",
+                                              pack.icon, pack.ship, pack.ball, pack.ufo, pack.wave, pack.robot, pack.spider, pack.swing, pack.priority)
+            : id;
+
+        packJson["unique"] = newId;
+
+        m_thisMod->setSavedValue(newId, packJson);
         return packJson;
     };
 

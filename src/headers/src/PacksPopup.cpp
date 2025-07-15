@@ -71,7 +71,8 @@ void PacksPopup::Pack(std::string name, int priority) {
         gm->getPlayerColor(),
         gm->getPlayerColor2(),
         gm->getPlayerGlowColor(),
-        gm->getPlayerGlow()
+        gm->getPlayerGlow(),
+        ""
     );
 
     IconPackManager::savePack(pack);

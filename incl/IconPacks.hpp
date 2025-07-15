@@ -8,6 +8,7 @@ using namespace matjson;
 namespace iconpacks {
     extern Mod* m_thisMod; // Favorite Mods
 
+    // An icon pack
     struct IconPack {
         bool pack = true;
 
@@ -33,6 +34,9 @@ namespace iconpacks {
 
         bool glow = false;
 
+        std::string unique = fmt::format("{}:{}:{}:{}:{}:{}:{}:{}-{}",
+                                         icon, ship, ball, ufo, wave, robot, spider, swing, priority);
+
         // evil constructor
         IconPack(
             bool pk, // Set to true
@@ -51,11 +55,13 @@ namespace iconpacks {
             int co1, // Player's primary color ID
             int co2, // Player's secondary color ID
             int coGl, // Player's glow color ID
-            bool gl // Player's glow setting
+            bool gl, // Player's glow setting
+            std::string u // Unique ID to the pack (leave empty if saving as new)
         ) : pack(pk), name(nme), priority(prio),
             icon(ic), ship(sh), ball(bl), ufo(uo), wave(wv), robot(rb), spider(sp), swing(sw),
             streak(str), shipFire(shFr),
-            color1(co1), color2(co2), colorGlow(coGl), glow(gl) {};
+            color1(co1), color2(co2), colorGlow(coGl), glow(gl),
+            unique(u) {};
 
         // Default constructor
         IconPack() = default;
@@ -71,7 +77,8 @@ namespace iconpacks {
 
         // Save a new icon pack
         static Value savePack(
-            IconPack pack // The constructed icon pack
+            IconPack pack, // The constructed icon pack
+            std::string id = "" // Optional id, empty if saving new pack
         );
 
         // Edit a pre-existing icon pack

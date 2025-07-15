@@ -8,8 +8,11 @@ bool PackItem::init(IconPack pack, CCSize size) {
     m_pack = pack;
 
     if (CCNode::init()) {
+        setID(pack.unique);
         setAnchorPoint({ 0, 1 });
         setContentSize(size);
+
+        auto gm = GameManager::get();
 
         // Layout to automatically position buttons on button menu
         auto iconsLayout = RowLayout::create();
@@ -30,6 +33,13 @@ bool PackItem::init(IconPack pack, CCSize size) {
 
         iconsMenu->updateLayout(true);
         addChild(iconsMenu);
+
+        if (auto icon = SimplePlayer::create(pack.icon)) {
+            if (pack.glow) icon->setGlowOutline(gm->colorForIdx(pack.colorGlow));
+
+            icon->setColors(gm->colorForIdx(pack.color1), gm->colorForIdx(pack.color2));
+            iconsMenu->addChild(icon);
+        };
 
         return true;
     } else {
